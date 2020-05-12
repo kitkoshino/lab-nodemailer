@@ -1,5 +1,5 @@
 {
-  "name": "node-basic-authentication",
+  "name": "basic-authentication",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,6 +21,7 @@
     "mongoose": "^=5.6.13",
     "morgan": "^1.9.1",
     "node-sass-middleware": "0.11.0",
+    "nodemailer": "^6.4.6",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
@@ -34,5 +35,17 @@
     "eslint-plugin-prettier": "^3.1.1",
     "prettier": "^1.18.2",
     "@ironh/eslint-config": "0.0.2"
-  }
+  },
+  "description": "![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kitkoshino/lab-nodemailer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kitkoshino/lab-nodemailer/issues"
+  },
+  "homepage": "https://github.com/kitkoshino/lab-nodemailer#readme"
 }
