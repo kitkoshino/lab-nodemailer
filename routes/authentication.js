@@ -52,7 +52,7 @@ router.post('/sign-up', (req, res, next) => {
       from: `Lab App <${process.env.NODEMAILER_EMAIL}`,
       to: email,
       subject: 'Lab test email',
-      html: '<a href="http://localhost:3000/auth/confirm/THE-CONFIRMATION-CODE-OF-THE-USER">Verify Email</a>'
+      html: `<a href="http://localhost:3000/confirm/${user.confirmationCode}">Verify Email</a>`
     })
     .then(result => {
       console.log('email was sent succesfully.');
@@ -63,12 +63,29 @@ router.post('/sign-up', (req, res, next) => {
       console.log('error sending the email');
       console.log(error);
     });
-      res.redirect('/');
     })
     .catch(error => {
       next(error);
     });
 });
+
+
+router.get('/confirm/:confirmCode', (req, res, next) => {
+  console.log('rota confirm code');
+  const confirmationCode = req.params.confirmCode;
+  console.log(confirmationCode);
+  User.findOneAndUpdate({confirmationCode},{status: 'Active'}).then(user => {
+    if (user) {
+      console.log('TEM');
+      res.render('confirmation');
+    } else {
+      console.log('NAO TEM');
+      res.render('error');
+    }
+  })
+
+  //User.find()
+})
 
 router.get('/sign-in', (req, res, next) => {
   res.render('sign-in');
@@ -110,6 +127,9 @@ router.get('/private', routeGuard, (req, res, next) => {
   res.render('private');
 });
 
+router.get('/profile', (req, res, next) => {
+  res.render('profile', {user: req.user});
+})
 
 
 
